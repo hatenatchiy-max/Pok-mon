@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ポケモンチャンピオンズ 相性補完チェッカー</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Pokemon Champions Team Tool</p>
+        <h1>ポケモンチャンピオンズ 相性補完チェッカー</h1>
+        <p class="lead">内定ポケモンから最大6匹を選んで、攻撃範囲、防御耐性、全体補完を確認できます。</p>
+      </div>
+      <div class="source-box">
+        <span>データ</span>
+        <strong>2026-06-15確認</strong>
+        <small>MeriStation掲載の確認済みリストをベースに、重複掲載分はリージョンフォームとして整理。</small>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="team-panel" aria-labelledby="team-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Team</p>
+            <h2 id="team-title">選択中の6匹</h2>
+          </div>
+          <button id="clear-team" class="ghost-button" type="button">全解除</button>
+        </div>
+        <div id="team-slots" class="team-slots" aria-live="polite"></div>
+      </section>
+
+      <section class="picker-panel" aria-labelledby="picker-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Roster</p>
+            <h2 id="picker-title">内定ポケモン一覧</h2>
+          </div>
+          <span id="roster-count" class="count-pill"></span>
+        </div>
+        <div class="toolbar">
+          <label class="search-field">
+            <span>検索</span>
+            <input id="search" type="search" placeholder="名前・タイプで検索" autocomplete="off" />
+          </label>
+          <label class="filter-field">
+            <span>タイプ</span>
+            <select id="type-filter"></select>
+          </label>
+        </div>
+        <div id="pokemon-list" class="pokemon-list"></div>
+      </section>
+
+      <section class="analysis-panel" aria-labelledby="analysis-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Analysis</p>
+            <h2 id="analysis-title">相性チェック</h2>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="相性チェック種別">
+          <button class="tab active" type="button" data-tab="offense" role="tab" aria-selected="true">攻撃の相性</button>
+          <button class="tab" type="button" data-tab="defense" role="tab" aria-selected="false">防御の相性</button>
+          <button class="tab" type="button" data-tab="overall" role="tab" aria-selected="false">全体の相性補完</button>
+        </div>
+        <div id="analysis-content" class="analysis-content"></div>
+      </section>
+    </main>
+
+    <template id="type-chip-template">
+      <span class="type-chip"></span>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
